@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var sendmail = require('sendmail')();
+var sendmail = require('sendmail');
 
 var Maillist = require('../../../schema/maillist');
 
