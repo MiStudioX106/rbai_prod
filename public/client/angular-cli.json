@@ -1,0 +1,83 @@
+{
+  "project": {
+    "version": "1.0.0-beta.21",
+    "name": "rbai-client"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "mobile": false,
+      "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/semantic-ui-icon/icon.min.css",
+        "./assets/css/gsdk.css",
+        "./assets/css/demo.css",
+        "./assets/css/ct-navbar.css",
+        "./assets/css/rotating-card.css",
+        "./assets/css/roundedmenu-style.css",
+        "./assets/css/owl.carousel.min.css",
+        "./assets/css/owl.theme.default.min.css",
+        "./styles.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "./assets/js/jquery-ui-1.10.4.custom.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "./assets/js/ct-navbar.js",
+        "./assets/js/gsdk-checkbox.js",
+        "./assets/js/gsdk-radio.js",
+        "./assets/js/gsdk-bootstrapswitch.js",
+        "./assets/js/get-shit-done.js",
+        "./assets/js/custom.js",
+        "./assets/js/roundedmenu-modernizr .js",
+        "./assets/js/roundedmenu-velocity.min.js",
+        "./assets/js/roundedmenu-main.js",
+        "./assets/js/owl.carousel.js"
+      ],
+      "environments": {
+        "source": "environments/environment.ts",
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "addons": [],
+  "packages": [],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}

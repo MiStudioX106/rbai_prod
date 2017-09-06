@@ -1,0 +1,4 @@
+/node_modules
+/public/admin/node_modules
+/public/client/node_modules
+npm-debug.log

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="../admin/admin-menu">
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 後台管理首頁
+      </a>
+    </div>
+  </div>
+</nav>
+<div id="container">
+  <div id="maillist">
+    <form role="form">
+      <label for="">寄信</label><br>
+      <label for="">To：</label>
+     
+      <select [(ngModel)]="mail.to" name="to" id="class" #class (change)="onChange(class.value)" >
+        <option  *ngFor='let maillist of maillist' [value]="maillist.class">{{ maillist.class }}</option>
+     </select>
+
+      <br>
+      <label for="subject">主旨：</label>
+      <input [(ngModel)]="mail.subject" type="text" name="subject" id="subject" size="100">
+      <br>
+      <label for="content">內容：</label>
+      <br>
+      <textarea [(ngModel)]="mail.content" name="content" id="content" cols="100" rows="10"></textarea>
+      <br>
+      <input type="file" name="attachment" id="attachment" ng2FileSelect [uploader]="uploader" (change)="uploader.uploadAll()" />{{uploaderError}}
+      <br>
+      <button (click)="sendMail()">寄信</button>
+    </form>
+  </div>
+</div>

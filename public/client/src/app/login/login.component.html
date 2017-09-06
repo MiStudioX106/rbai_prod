@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+	  <div class="col-md-offset-5 col-md-3">
+      <div class="form-login">
+        <h4>Admin Login.</h4>
+        <input [(ngModel)]="login.userid" type="text" name="userid" id="userid" class="form-control input-sm chat-input" placeholder="user id" />
+        <br>
+        <input [(ngModel)]="login.userpwd" type="password" name="userpwd" id="userpwd" class="form-control input-sm chat-input" placeholder="password" />
+        <br>
+        <button (click)="sendlogin()">Login</button>
+      </div>
+    </div>
+	</div>
+</div>
+

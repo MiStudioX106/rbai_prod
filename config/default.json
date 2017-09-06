@@ -1,0 +1,18 @@
+{
+    "serverConfig": {
+        "port": 8087
+    },
+    // "dbConfig": {
+    //     "url": "mongodb://studio.mis.ccu.edu.tw/rbai",
+    //     "opt": {
+    //         "user": "rbaiRW",
+    //         "pass": "!QAZmissa2wsx"
+    //     }
+    // }
+    "dbConfig": {
+        "url": "mongodb://140.123.174.7/rbai",
+        "opt": {
+           
+        }
+    }
+}

@@ -1,0 +1,37 @@
+/*a{max-width: 600px}*/
+
+.list {
+  max-height: 485px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
+.item {
+  color: #555;
+  position: relative;
+  display: block;
+  padding: 10px 95px 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border-bottom: 2px solid #ddd;
+}
+
+.item:hover {
+  color: #555;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.badge {
+  position: absolute;
+  background-color: #dad0d0;
+  right: 10px;
+  top: 32%;
+}
+
+@media (max-width: 767px) {
+  .list {
+    max-height: initial;
+  }
+}
