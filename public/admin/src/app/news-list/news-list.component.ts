@@ -15,26 +15,29 @@ import './news-list.js'
 })
 export class NewsListComponent implements OnInit {
 
-  @Input() type: string;
-
+  type : string;
   fullMode: boolean;
   private sub: any;
 
   newsList: News[];
 
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
 
-  ngOnInit() {
-    if (this.type == null) {
+
       this.sub = this.route.params.subscribe(params => {
         if (params['type'])
-          this.type = params['type'];
+          console.log(params['type']);
+        this.type = params['type'];
         this.fullMode = true;
-
+        this.getNewsList(params['type']);
       });
-    }
-    this.getNewsList(this.type);
+    
+    
+   }
+
+  ngOnInit() {
+   
   }
 
   getNewsList(type): void {

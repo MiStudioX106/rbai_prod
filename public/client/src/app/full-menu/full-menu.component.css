@@ -174,26 +174,43 @@ i.icon {
   color: white;
 }
 
-.nav li .breakdown a{
-  font-family: '微軟正黑體';
-	text-align:center;
-	display:block;
-	padding-top:10px;
-	color:rgba(255, 255, 255, 1);
-	font-size:0.9em;
-	transition:padding-top 0.4s , padding-bottom 0.4s;
-	-webkit-transition:padding-top 0.4s , padding-bottom 0.4s;
+.menu_item{
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  color: rgba(255, 255, 255, 1);
+  transition: padding-top 0.4s , padding-bottom 0.4s;
+  -webkit-transition: padding-top 0.4s , padding-bottom 0.4s;
 }
-.nav li:hover .breakdown a{
+
+.nav li:hover .breakdown .menu_item, .nav li:hover .breakdown .item_wrapper{
 	padding-top:12px;
   padding-bottom: 12px;
 }
-.nav li .breakdown a {
+.nav li:hover .breakdown .no_link_item{
+	padding: 0;
+}
+.nav li .breakdown .menu_item{
   color: white;
   font-size: 18px;
 }
-.nav li .breakdown a:hover{
+.nav li .breakdown .menu_item:hover, .nav li .breakdown .menu_sub_item:hover{
   background: rgba(256, 256, 256, 0.2);
+}
+.no_link_item {
+  font-weight: 300;
+}
+.nav li .breakdown .no_link_item:hover {
+  background: transparent;
+}
+.menu_sub_item{
+  text-align: center;
+  display: block;
+  padding: 1px 0;
+  color: #ffffff;
+  font-size: 14px;
+  transition: padding-top 0.4s , padding-bottom 0.4s;
+  -webkit-transition: padding-top 0.4s , padding-bottom 0.4s;
 }
 .breakdown{
   margin-top: 0.5em;
@@ -213,9 +230,6 @@ i.icon {
 .other{
 	background: #948a8a;
 }
-/*.news, .intro, .recruit, .document, .other{
-  background: #ccc;
-}*/
 .news:hover{
 	background: #6FC4CE;
 }
@@ -239,14 +253,13 @@ i.icon {
     display: none;
   }
   .cd-primary-nav li {
-    /*margin: 2.6em 0;*/
     padding: 0;
   }
   a.bt_title {
     padding: 1.5em 0 3em 0;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .nav li{
     width: 50%;
     height:33.33vh;
@@ -263,13 +276,8 @@ i.icon {
     padding-bottom: 8px;
   }
 }
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 768px) {
   .cd-primary-nav li {
-    /*margin: 2.6em 0;*/
     padding: 8em 0;
-  }
-  .cd-primary-nav a {
-    font-size: 32px;
-    font-size: 2rem;
   }
 }

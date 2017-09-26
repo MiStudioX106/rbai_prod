@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Jsonp } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 //
 import { environment } from 'environments/environment';
@@ -20,16 +21,16 @@ export class AdminApiService {
   //20170329
   private mailUrl = environment.adminUrl + '/mail';
 
-  private documentUrl = environment.adminUrl ;
+  private documentUrl = environment.adminUrl;
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private authHttp: AuthHttp) { }
 
   createNews(news: News) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .post(this.newsUrl, JSON.stringify(news), { headers: headers })
       .map(response => response.json())
   }
@@ -37,7 +38,7 @@ export class AdminApiService {
   updateNews(id: string, news: News) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .put(this.newsUrl + '/' + id, JSON.stringify(news), { headers: headers })
       .map(response => response.json())
   }
@@ -69,7 +70,7 @@ export class AdminApiService {
   deleteMember(id: string) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .delete(this.memberUrl + '/' + id, { headers: headers })
       .map(response => response.json())
   }
@@ -77,7 +78,7 @@ export class AdminApiService {
   createRecruit(recruit: Recruit) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .post(this.recruitUrl, JSON.stringify(recruit), { headers: headers })
       .map(response => response.json())
   }
@@ -85,7 +86,7 @@ export class AdminApiService {
   updateRecruit(id: string, recruit: Recruit) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .put(this.recruitUrl + '/' + id, JSON.stringify(recruit), { headers: headers })
       .map(response => response.json())
   }
@@ -93,13 +94,13 @@ export class AdminApiService {
   deleteRecruit(id: string) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .delete(this.recruitUrl + '/' + id, { headers: headers })
       .map(response => response.json())
   }
 
   getMaillist() {
-    return this.http.get(this.maillistUrl)
+    return this.authHttp.get(this.maillistUrl)
       .map(response => response.json());
   }
 
@@ -108,35 +109,35 @@ export class AdminApiService {
 
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .post(this.mailUrl, JSON.stringify(mail), { headers: headers })
       .map(response => response.json())
 
   }
   //2017/05/25
-  createDocument(document: Document,doctype) {
+  createDocument(document: Document, doctype) {
     var headers = new Headers();
-    this.documentUrl=environment.adminUrl+'/'+doctype;
+    this.documentUrl = environment.adminUrl + '/' + doctype;
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .post(this.documentUrl, JSON.stringify(document), { headers: headers })
       .map(response => response.json())
   }
 
-  updateDocument(id: string, document: Document,doctype) {
+  updateDocument(id: string, document: Document, doctype) {
     var headers = new Headers();
-    this.documentUrl=environment.adminUrl+'/'+doctype;
+    this.documentUrl = environment.adminUrl + '/' + doctype;
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .put(this.documentUrl + '/' + id, JSON.stringify(document), { headers: headers })
       .map(response => response.json())
   }
 
-  deleteDocument(id: string,doctype) {
+  deleteDocument(id: string, doctype) {
     var headers = new Headers();
-    this.documentUrl=environment.adminUrl+'/'+doctype;
+    this.documentUrl = environment.adminUrl + '/' + doctype;
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .delete(this.documentUrl + '/' + id, { headers: headers })
       .map(response => response.json())
   }

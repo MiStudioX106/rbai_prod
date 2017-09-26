@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './auth.module';
 
 //other Library
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -23,6 +24,8 @@ import { NewsContentComponent } from '../../../client/src/app/news-content/news-
 
 //Service
 import { AdminApiService } from './admin-api.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 //Component
 import { AppComponent } from './app.component';
@@ -40,6 +43,7 @@ import { NewsTypePipe } from './news-type.pipe';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { MaillistComponent } from './maillist/maillist.component';
 import { DocumentsComponent } from './documents/documents.component';
+import { CallbackComponent } from './callback/callback.component';
 
 
 @NgModule({
@@ -65,7 +69,8 @@ import { DocumentsComponent } from './documents/documents.component';
     NewsTypePipe,
     AdminMenuComponent,
     MaillistComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -73,8 +78,9 @@ import { DocumentsComponent } from './documents/documents.component';
     HttpModule,
     CKEditorModule,
     AppRoutingModule,
+    AuthModule
   ],
-  providers: [ApiService, AdminApiService],
+  providers: [ApiService, AdminApiService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

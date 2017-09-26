@@ -12,16 +12,19 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { MaillistComponent } from './maillist/maillist.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentEditComponent } from './document-edit/document-edit.component';
-
+import { AuthGuard } from './auth-guard.service';
+import { CallbackComponent } from './callback/callback.component';
 
 const routes: Routes = [
   {
     path: 'member-add/:type',
-    component: MemberEditComponent
+    component: MemberEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'member-edit/:id',
-    component: MemberEditComponent
+    component: MemberEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'members',
@@ -33,41 +36,49 @@ const routes: Routes = [
   },
   {
     path: 'recruit-add/:type',
-    component: RecruitEditComponent
+    component: RecruitEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'recruit-edit/:id',
-    component: RecruitEditComponent
+    component: RecruitEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'news-add/:type',
-    component: NewsEditComponent
+    component: NewsEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'news-edit/:id',
-    component: NewsEditComponent
+    component: NewsEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'news-list/:type',
     component: NewsListComponent
   },
   {
-    path: 'admin-menu',
-    component: AdminMenuComponent
-  },
-  {
     path: 'maillist',
-    component: MaillistComponent
-  },{
+    component: MaillistComponent,
+    canActivate: [AuthGuard]
+  }, 
+  {
     path: 'documents',
     component: DocumentsComponent
-  },{
+  }, 
+  {
     path: 'document-add/:doctype/:type',
-    component: DocumentEditComponent
+    component: DocumentEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'document-edit/:doctype/:id',
-    component: DocumentEditComponent
+    component: DocumentEditComponent,
+  },
+  {
+    path: 'callback',
+    component: CallbackComponent,
   }
 ];
 @NgModule({

@@ -12,7 +12,8 @@
     "dbConfig": {
         "url": "mongodb://140.123.174.7/rbai",
         "opt": {
-           
+            "user": "rbaiRW",
+            "pass": "!QAZmissa2wsx"
         }
     }
 }

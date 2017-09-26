@@ -6,5 +6,6 @@
 export const environment = {
   production: false,
   url: 'http://localhost:8087/api',
-  adminUrl:'http://localhost:8087/admin/api'
+  adminUrl: 'http://localhost:8087/admin/api',
+  Auth0Redirect: '/callback'
 };

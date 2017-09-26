@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
+
+
 var news = require('./api/news');
 var member = require('./api/member');
 var recruit = require('./api/recruit');
@@ -14,16 +18,31 @@ var exam = require('./api/exam');
 var course = require('./api/course');
 
 
-router.use('/api/news', news);
-router.use('/api/member', member);
-router.use('/api/recruit', recruit);
-router.use('/api/upload', upload);
-router.use('/api/wysiwyg', wysiwyg);
-router.use('/api/maillist', maillist);
-router.use('/api/mail', mail);
-router.use('/api/document', document);
-router.use('/api/exam', exam);
-router.use('/api/course',course);
+// // We are going to implement a JWT middleware that will ensure the validity of our token. We'll require each protected route to have a valid access_token sent in the Authorization header
+const authCheck = jwt({
+    secret: jwks.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: "https://ccumissa.auth0.com/.well-known/jwks.json"
+    }),
+    // This is the identifier we set when we created the API
+    audience: 'Rbai-Admin-API',
+    issuer: "https://ccumissa.auth0.com/",
+    algorithms: ['RS256']
+});
+
+
+router.use('/api/news', authCheck, news);
+router.use('/api/member', authCheck, member);
+router.use('/api/recruit', authCheck, recruit);
+router.use('/api/upload', authCheck, upload);
+router.use('/api/wysiwyg', authCheck, wysiwyg);
+router.use('/api/maillist', authCheck, maillist);
+router.use('/api/mail', authCheck, mail);
+router.use('/api/document', authCheck, document);
+router.use('/api/exam', authCheck, exam);
+router.use('/api/course',authCheck, course);
 
 
 
