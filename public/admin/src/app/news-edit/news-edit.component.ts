@@ -24,7 +24,7 @@ export class NewsEditComponent implements OnInit {
     private apiService: ApiService,
     private adminApiService: AdminApiService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     //edit or create
@@ -38,7 +38,7 @@ export class NewsEditComponent implements OnInit {
       } else if (params['type']) {
         //create news
         this.news = {
-          type: params['type'], publisher: '', title: '', content: ''
+          type: params['type'], subType: '', publisher: '', title: '', content: ''
         }
         console.log(params['type'])
       } else {
@@ -63,7 +63,7 @@ export class NewsEditComponent implements OnInit {
       .subscribe(data => {
         if (data.error_code != 0) {
           alert(data.error_code)
-        }else{
+        } else {
           alert('編輯成功');
         }
       });
@@ -75,19 +75,19 @@ export class NewsEditComponent implements OnInit {
       .subscribe(data => {
         if (data.error_code != 0) {
           alert(data.error_code)
-        }else{
+        } else {
           alert('刪除成功');
         }
       });
   }
 
-  createNews():void{
+  createNews(): void {
     this.adminApiService
       .createNews(this.news)
       .subscribe(data => {
-        if(data.error_code !=0 ){
+        if (data.error_code != 0) {
           alert(data.error_code)
-        }else{
+        } else {
           alert('新增成功');
         }
       })

@@ -27,9 +27,9 @@ export class DocumentListComponent implements OnInit {
   }
   goEditPage(doctype:String,id) {
     this.router.navigate(['/document-edit',doctype,id]);
-    console.log(this.documents);
-    console.log(this.edit);
-    console.log(this.doctype);
+    // console.log(this.documents);
+    // console.log(this.edit);
+    // console.log(this.doctype);
     
   }
 }

@@ -13,10 +13,16 @@ export class NewsTypePipe implements PipeTransform {
         return '演講公告';
       case 'other':
         return '其他公告';
-      case 'imexam':
+      case 'masterexam':
         return '碩士學位考試公告';
+      case 'embaexam':
+        return '碩專學位考試公告';
       case 'phdexam':
         return '博士學位考試公告';
+      case 'general':
+        return '資訊管理碩士班';
+      case 'health_care':
+        return '醫療資訊管理碩士班';
     }
   }
 }

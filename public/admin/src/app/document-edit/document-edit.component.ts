@@ -22,7 +22,7 @@ export class DocumentEditComponent implements OnInit {
   type: string;
   document: Document;
   uploaderError: string;
-  doctype:String;
+  doctype: String;
 
   private sub: any;
 
@@ -34,19 +34,18 @@ export class DocumentEditComponent implements OnInit {
     private apiService: ApiService,
     private adminApiService: AdminApiService,
     private route: ActivatedRoute
-  ) { 
+  ) {
     this.documentuploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       response = JSON.parse(response);
       if (response.error_code != '0') {
         return this.uploaderError = response.err_desc;
       }
-    
+
       var dateFormat = require('dateformat');
       var datetimestamp = dateFormat(Date.now(), "yyyy-mm-dd");
-      this.document.link = response.filename;
+      this.document.link = response.filelink;
       this.document.time = datetimestamp;
-      this.document.title=response.filename;
-      //console.log(this.document);
+
     };
 
     this.examuploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -54,13 +53,11 @@ export class DocumentEditComponent implements OnInit {
       if (response.error_code != '0') {
         return this.uploaderError = response.err_desc;
       }
-    
+
       var dateFormat = require('dateformat');
       var datetimestamp = dateFormat(Date.now(), "yyyy-mm-dd");
       this.document.link = response.filename;
       this.document.time = datetimestamp;
-      this.document.title=response.filename;
-      //console.log(this.document);
     };
 
     this.courseuploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -68,13 +65,11 @@ export class DocumentEditComponent implements OnInit {
       if (response.error_code != '0') {
         return this.uploaderError = response.err_desc;
       }
-    
+
       var dateFormat = require('dateformat');
       var datetimestamp = dateFormat(Date.now(), "yyyy-mm-dd");
       this.document.link = response.filename;
       this.document.time = datetimestamp;
-      this.document.title=response.filename;
-      //console.log(this.document);
     };
   }
 
@@ -84,32 +79,33 @@ export class DocumentEditComponent implements OnInit {
       if (params['id']) {
         this.id = params['id'];
         this.editMode = true;
-        this.doctype=params['doctype'];
-        this.getDocument(this.id,params['doctype']);
+        this.doctype = params['doctype'];
+        this.getDocument(this.id, params['doctype']);
       } else if (params['type']) {
-        this.document = { type: params['type'], title: '', time: null,link:''}
-        this.doctype=params['doctype'];
+        this.document = { type: params['type'], title: '', time: null, link: '' }
+        this.doctype = params['doctype'];
       } else {
         console.log('error');
       }
     });
-    
+
   }
   //document
-  getDocument(id,path): void {
+  getDocument(id, path): void {
     this.apiService
-      .getDocument(id,path)
+      .getDocument(id, path)
       .subscribe(data => {
         this.document = data;
         //console.log(this.document);
       });
   }
   createDocument(doctype): void {
+    console.log(this.document);
     this.adminApiService
-      .createDocument(this.document,doctype)
+      .createDocument(this.document, doctype)
       .subscribe(data => {
         this.document = data;
-        if(data.error_code==0){
+        if (data.error_code == 0) {
           alert('新增成功');
         }
       });
@@ -117,11 +113,11 @@ export class DocumentEditComponent implements OnInit {
 
   updateDocument(doctype): void {
     this.adminApiService
-      .updateDocument(this.id,this.document,doctype)
+      .updateDocument(this.id, this.document, doctype)
       .subscribe(data => {
         if (data.error_code != 0) {
           alert(data.error_code)
-        }else{
+        } else {
           alert('編輯成功');
         }
       });
@@ -129,11 +125,11 @@ export class DocumentEditComponent implements OnInit {
 
   deleteDocument(doctype): void {
     this.adminApiService
-      .deleteDocument(this.id,doctype)
+      .deleteDocument(this.id, doctype)
       .subscribe(data => {
         if (data.error_code != 0) {
           alert(data.error_code)
-        }else{
+        } else {
           alert('刪除成功');
         }
       });

@@ -15,24 +15,27 @@ export class NewsListComponent implements OnInit {
 
   @Input() type: string;
 
-  fullMode: boolean;
+  fullMode: boolean = false;
   private sub: any;
-
   newsList: News[];
 
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute) {
+
+    this.sub = this.route.params.subscribe(params => {
+      if (params['type']) {
+        this.type = params['type'];
+        this.fullMode = true;
+        this.getNewsList(this.type);
+      }
+    });
+
+  }
 
   ngOnInit() {
-    if (this.type == null) {
-      this.sub = this.route.params.subscribe(params => {
-        if (params['type'])
-          this.type = params['type'];
-        this.fullMode = true;
-
-      });
+    if (this.fullMode == false) {
+      this.getNewsList(this.type);
     }
-    this.getNewsList(this.type);
   }
 
   getNewsList(type): void {

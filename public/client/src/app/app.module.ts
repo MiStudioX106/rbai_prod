@@ -37,8 +37,10 @@ import { DocumentComponent } from './document/document.component';
 import { RecruitContentComponent } from './recruit-content/recruit-content.component';
 import { NewsContentComponent } from './news-content/news-content.component';
 import { NewsTypePipe } from './news-type.pipe';
+import { ExamTypePipe } from './exam-type.pipe';
 
 import { OwlModule } from 'ng2-owl-carousel';
+import { OtherComponent } from './other/other.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { OwlModule } from 'ng2-owl-carousel';
     SafePipe,
     ButtonEditComponent,
     NewsContentComponent,
-    NewsTypePipe
+    NewsTypePipe,
+    ExamTypePipe,
+    OtherComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-5 news-column news-title-block">
       <div class="news-title">
-        <a routerLink="/news-listview" routerLinkActive="active">最新消息</a>
+        最新消息
       </div>
     </div>
     <div class="col-xs-12 col-md-7 news-column">
@@ -24,7 +24,26 @@
           <app-news-list [type]="'dept'"></app-news-list>
         </div>
         <div class="col-xs-12 col-md-12 news-cell">
-          <app-news-list [type]="'imexam'"></app-news-list>
+          <div class="list-style-type">
+            <h3>學位考試公告</h3>
+            <ol>
+              <li>
+                <a routerLink="/news-list/masterexam">
+                  <h4 class="list-title">碩士班</h4>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/news-list/embaexam">
+                  <h4 class="list-title">碩專班</h4>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/news-list/phdexam">
+                  <h4 class="list-title">博士班</h4>
+                </a>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-6 news-column">

@@ -17,7 +17,7 @@ router.post('/exam', function (req, res) {
     res.json({
       error_code: 0,
       err_desc: null,
-      filename: req.file.filename
+      filelink: 'exam/' + req.file.filename
     });
   });
 });
@@ -33,7 +33,7 @@ router.post('/doc', function (req, res) {
     res.json({
       error_code: 0,
       err_desc: null,
-      filename: req.file.filename
+      filelink: 'doc/' + req.file.filename
     });
   });
 });
@@ -49,7 +49,7 @@ router.post('/course', function (req, res) {
     res.json({
       error_code: 0,
       err_desc: null,
-      filename: req.file.filename
+      filelink: 'course/' + req.file.filename
     });
   });
 });
@@ -58,7 +58,7 @@ router.post('/course', function (req, res) {
 var exam = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/doc');
+      cb(null, './public/doc/exam');
     },
     filename: function (req, file, cb) {
       var filetype = file.originalname.split('.').pop();
@@ -72,7 +72,7 @@ var exam = multer({
 var doc = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/doc');
+      cb(null, './public/doc/doc');
     },
     filename: function (req, file, cb) {
       var filetype = file.originalname.split('.').pop();
@@ -85,7 +85,7 @@ var doc = multer({
 var course = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/doc');
+      cb(null, './public/doc/course');
     },
     filename: function (req, file, cb) {
       var filetype = file.originalname.split('.').pop();

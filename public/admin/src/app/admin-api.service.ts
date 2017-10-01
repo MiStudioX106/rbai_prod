@@ -46,7 +46,7 @@ export class AdminApiService {
   deleteNews(id: string) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .delete(this.newsUrl + '/' + id, { headers: headers })
       .map(response => response.json())
   }
@@ -54,7 +54,7 @@ export class AdminApiService {
   createMember(member: Member) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .post(this.memberUrl, JSON.stringify(member), { headers: headers })
       .map(response => response.json())
   }
@@ -62,7 +62,7 @@ export class AdminApiService {
   updateMember(id: string, member: Member) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http
+    return this.authHttp
       .put(this.memberUrl + '/' + id, JSON.stringify(member), { headers: headers })
       .map(response => response.json())
   }

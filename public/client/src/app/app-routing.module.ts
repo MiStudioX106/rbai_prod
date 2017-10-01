@@ -13,6 +13,7 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { DegreeRequirementsComponent } from './degree-requirements/degree-requirements.component';
 import { DocumentComponent } from './document/document.component';
 import { NewsContentComponent } from './news-content/news-content.component';
+import { OtherComponent } from './other/other.component';
 
 
 const routes: Routes = [
@@ -67,8 +68,10 @@ const routes: Routes = [
   }, {
     path: 'news/:id',
     component: NewsContentComponent
-  },
-  {
+  }, {
+    path: 'other',
+    component: OtherComponent
+  }, {
     path: '**',
     redirectTo: '/'
   }

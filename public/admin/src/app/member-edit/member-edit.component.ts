@@ -39,7 +39,6 @@ export class MemberEditComponent implements OnInit {
         return this.uploaderError = response.err_desc;
       }
       this.member.imgUrl = response.filename;
-      console.log(this.member);
     };
   }
 

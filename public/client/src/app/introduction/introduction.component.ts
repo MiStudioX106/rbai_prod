@@ -33,7 +33,6 @@ export class IntroductionComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    console.log('loaded');
     if (this.section) {
        this.goSection(this.section);
        this.init = false;

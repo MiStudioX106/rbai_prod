@@ -5,17 +5,17 @@
         <h3>{{news.title}}</h3>
       </div>
       <ul class="ul">
-        <li class="remark">
+        <li *ngIf="news.updateTime" class="remark" >
           <span class="remarkLabel">更新時間</span>
-          <span class="remarkValue">{{(news.updateTime | date: 'yyyy-mm-dd') || '-'}}</span>
+          <span class="remarkValue">{{(news.updateTime | date: 'mediumDate') || '-'}}</span>
         </li>
         <li class="remark">
           <span class="remarkLabel">公告時間</span>
-          <span class="remarkValue">{{news.time | date: 'yyyy-mm-dd'}}</span>
+          <span class="remarkValue">{{news.time | date: 'mediumDate'}}</span>
         </li>
         <li class="remark">
           <span class="remarkLabel">類別</span>
-          <span class="remarkValue">{{news.type}}</span>
+          <span class="remarkValue">{{(news.subType || news.type) | newsType}}</span>
         </li>
         <li class="remark" ng-false="false">
           <span class="remarkLabel">發文者</span>

@@ -36,8 +36,8 @@ const authCheck = jwt({
 router.use('/api/news', authCheck, news);
 router.use('/api/member', authCheck, member);
 router.use('/api/recruit', authCheck, recruit);
-router.use('/api/upload', authCheck, upload);
-router.use('/api/wysiwyg', authCheck, wysiwyg);
+router.use('/api/upload', upload);
+router.use('/api/wysiwyg', wysiwyg);
 router.use('/api/maillist', authCheck, maillist);
 router.use('/api/mail', authCheck, mail);
 router.use('/api/document', authCheck, document);

@@ -16,8 +16,17 @@
         <td>類別</td>
         <td>{{news.type | newsType}}</td>
       </tr>
+      <tr *ngIf="news.type=='masterexam'">
+        <td>子類別</td>
+        <td>
+          <select class="form-control" name="subType" [(ngModel)]="news.subType" required>
+            <option value="general">資訊管理</option>
+            <option value="health_care">醫療資訊管理</option>
+          </select>
+        </td>
+      </tr>
       <tr *ngIf="editMode">
-        <td > 發文者</td>
+        <td> 發文者</td>
         <td>{{news.publisher}}</td>
       </tr>
       <tr *ngIf="editMode">
@@ -25,7 +34,7 @@
         <td>{{news.time | date: 'mediumDate'}}</td>
       </tr>
       <tr *ngIf="editMode">
-        <td >更新時間</td>
+        <td>更新時間</td>
         <td>{{news.updateTime | date: 'mediumDate'}}</td>
       </tr>
       <tr>

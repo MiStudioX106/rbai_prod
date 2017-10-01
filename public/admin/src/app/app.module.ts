@@ -40,6 +40,7 @@ import { DocumentEditComponent } from './document-edit/document-edit.component';
 import { NewsEditComponent } from './news-edit/news-edit.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { NewsTypePipe } from './news-type.pipe';
+import { ExamTypePipe } from './exam-type.pipe';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { MaillistComponent } from './maillist/maillist.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -67,6 +68,7 @@ import { CallbackComponent } from './callback/callback.component';
     NewsContentComponent,
     NewsListComponent,
     NewsTypePipe,
+    ExamTypePipe,
     AdminMenuComponent,
     MaillistComponent,
     DocumentsComponent,
