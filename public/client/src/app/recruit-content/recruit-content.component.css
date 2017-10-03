@@ -6,3 +6,9 @@
 .panel-group {
   margin: 23px 0;
 }
+.recruit {
+  display: flex;
+}
+.recruit .editBtnWrapper {
+  padding: 24px 16px;
+}

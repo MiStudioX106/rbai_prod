@@ -16,6 +16,9 @@
     </div>
     <!--卡片背面-->
     <div class="back">
+      <div class="editBtnWrapper">
+        <app-button-edit *ngIf="edit" (click)="goEditPage(member._id)"></app-button-edit>
+      </div>
       <div class="content">
         <div class="header">{{member.name}}</div>
         <div class="subtitle">{{member.title}}</div>
@@ -32,7 +35,6 @@
           <div><i class="mail icon"></i>E-mail：{{member.email}}</div>
         </div>
       </div>
-        <app-button-edit *ngIf="edit" (click)="goEditPage(member._id)"></app-button-edit>
       <div class="attached bottom button" onclick="rotateCard(this)"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>返回</div>
     </div>
   </div>

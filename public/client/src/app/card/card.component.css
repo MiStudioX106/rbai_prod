@@ -11,6 +11,7 @@
 
 .card {
   padding: 0 !important;
+  position: relative;
 }
 
 .card-container {
@@ -322,4 +323,11 @@
 .front .glyphicon,
 .back .glyphicon {
   padding: 0 5px;
+}
+
+/*edit_btn*/
+.card .editBtnWrapper {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
