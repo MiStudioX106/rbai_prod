@@ -17,6 +17,8 @@ export class AdminApiService {
   private memberUrl = environment.adminUrl + '/member';
   private recruitUrl = environment.adminUrl + '/recruit';
   private maillistUrl = environment.adminUrl + '/maillist';
+  private userUrl = environment.adminUrl + '/user';
+
 
   //20170329
   private mailUrl = environment.adminUrl + '/mail';
@@ -139,6 +141,14 @@ export class AdminApiService {
     headers.append('Content-Type', 'application/json');
     return this.authHttp
       .delete(this.documentUrl + '/' + id, { headers: headers })
+      .map(response => response.json())
+  }
+
+
+  getUserName(email: string) {
+
+    return this.authHttp
+      .get(this.memberUrl + '/email/' + email)
       .map(response => response.json())
   }
 

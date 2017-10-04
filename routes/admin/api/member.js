@@ -55,5 +55,17 @@ router.delete('/:id', function(req, res) {
         }
     });
 });
+//get Member by E-mail
+router.get('/email/:email', function (req, res, next) {
+    Member.findOne({
+        email: req.params.email
+    }, function (err, members) {
+        if (err) {
+            res.send(err).status(404);
+        } else {
+            res.json(members).status(200);
+        }
+    });
+});
 
 module.exports = router;

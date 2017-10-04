@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //
 import { AdminApiService } from '../admin-api.service';
+import { Data } from '../data';
 //
 import { ApiService } from '../../../../client/src/app/api.service';
 import { News } from '../../../../client/src/app/news';
-import './news-edit.js';
 
 @Component({
   selector: 'app-news-edit',
@@ -23,14 +23,16 @@ export class NewsEditComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private adminApiService: AdminApiService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private data: Data
+  ) {
+
+  }
 
   ngOnInit() {
     //edit or create
     this.sub = this.route.params.subscribe(params => {
       if (params['id']) {
-        console.log(params['id'])
         //edit news
         this.id = params['id'];
         this.editMode = true;
@@ -38,7 +40,7 @@ export class NewsEditComponent implements OnInit {
       } else if (params['type']) {
         //create news
         this.news = {
-          type: params['type'], subType: '', publisher: '', title: '', content: ''
+          type: params['type'], subType: '', publisher: this.data.user.name, title: '', content: ''
         }
         console.log(params['type'])
       } else {
@@ -58,6 +60,7 @@ export class NewsEditComponent implements OnInit {
 
 
   updateNews(): void {
+    this.news.publisher = this.data.user.name;
     this.adminApiService
       .updateNews(this.id, this.news)
       .subscribe(data => {

@@ -24,6 +24,7 @@ import { NewsContentComponent } from '../../../client/src/app/news-content/news-
 
 //Service
 import { AdminApiService } from './admin-api.service';
+import { Data } from './data';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 
@@ -82,7 +83,7 @@ import { CallbackComponent } from './callback/callback.component';
     AppRoutingModule,
     AuthModule
   ],
-  providers: [ApiService, AdminApiService, AuthService, AuthGuard],
+  providers: [ApiService, AdminApiService, Data, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

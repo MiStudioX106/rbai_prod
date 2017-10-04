@@ -7,28 +7,31 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a *ngIf="!authService.authenticated" (click)="authService.login()">Log In</a>
+        <a *ngIf="data.user && authService.authenticated"> {{data.user.name}}</a>
       </li>
       <li>
-        <a (click)=authService.logout() *ngIf="authService.authenticated">Log Out</a>
+        <a *ngIf="!authService.authenticated" (click)="authService.login()">登入</a>
+      </li>
+      <li>
+        <a (click)=authService.logout() *ngIf="authService.authenticated">登出</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<div class="button-list row" >
+<div class="button-list row">
   <div class="btn-group col-md-3">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <h4>編輯公告 <span class="caret"></span></h4>
   </button>
-  <ul class="dropdown-menu">
-    <li><a routerLink="/news-list/dept" routerLinkActive="active">系所公告</a></li>
-    <li><a routerLink="/news-list/speech" routerLinkActive="active">演講公告</a></li>
-    <li><a routerLink="/news-list/other" routerLinkActive="active">其他公告</a></li>
-    <li><a routerLink="/news-list/masterexam" routerLinkActive="active">碩士學位考試公告</a></li>
-    <li><a routerLink="/news-list/embaexam" routerLinkActive="active">碩專學位考試公告</a></li>
-    <li><a routerLink="/news-list/phdexam" routerLinkActive="active">博士學位考試公告</a></li>
-  </ul>
+    <ul class="dropdown-menu">
+      <li><a routerLink="/news-list/dept" routerLinkActive="active">系所公告</a></li>
+      <li><a routerLink="/news-list/speech" routerLinkActive="active">演講公告</a></li>
+      <li><a routerLink="/news-list/other" routerLinkActive="active">其他公告</a></li>
+      <li><a routerLink="/news-list/masterexam" routerLinkActive="active">碩士學位考試公告</a></li>
+      <li><a routerLink="/news-list/embaexam" routerLinkActive="active">碩專學位考試公告</a></li>
+      <li><a routerLink="/news-list/phdexam" routerLinkActive="active">博士學位考試公告</a></li>
+    </ul>
   </div>
   <div class="btn-group col-md-3 ">
     <a routerLink="/recruitments" routerLinkActive="active">

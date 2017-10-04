@@ -9,8 +9,7 @@ import { AdminApiService } from '../admin-api.service';
 import { CardComponent } from '../../../../client/src/app/card/card.component';
 import { ApiService } from '../../../../client/src/app/api.service';
 import { Member } from '../../../../client/src/app/member';
-//
-import './member-edit.js'
+
 
 @Component({
   selector: 'app-member-edit',

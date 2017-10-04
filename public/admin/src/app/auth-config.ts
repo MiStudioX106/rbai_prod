@@ -6,7 +6,6 @@ interface AuthConfig {
   AUDIENCE: string;
   REDIRECT: string;
   SCOPE: string;
-  LANGUAGE: string
 }
 
 export const AUTH_CONFIG: AuthConfig = {
@@ -14,6 +13,5 @@ export const AUTH_CONFIG: AuthConfig = {
   CLIENT_DOMAIN: 'ccumissa.auth0.com',
   AUDIENCE: 'Rbai-Admin-API',
   REDIRECT: window.location.origin + environment.Auth0Redirect,
-  SCOPE: 'openid',
-  LANGUAGE: 'es'
+  SCOPE: 'openid profile'
 };

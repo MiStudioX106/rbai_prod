@@ -3,18 +3,19 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AUTH_CONFIG } from './auth-config';
 import { tokenNotExpired } from 'angular2-jwt';
+import { AdminApiService } from './admin-api.service';
+import { Data } from './data';
 
 // Avoid name not found warnings
 declare var auth0: any;
 var options = {
-  language: 'es',
   redirect: true
 };
 @Injectable()
 export class AuthService {
   // Create Auth0 web auth instance
   // @TODO: Update AUTH_CONFIG and remove .example extension in src/app/auth/auth0-variables.ts.example
-  
+
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.CLIENT_ID,
     domain: AUTH_CONFIG.CLIENT_DOMAIN,
@@ -25,7 +26,7 @@ export class AuthService {
   loggedIn: boolean;
   loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private adminApiService: AdminApiService, public data: Data) {
     // If authenticated, set local profile property and update login status subject
     if (this.authenticated) {
       this.setLoggedIn(true);
@@ -67,6 +68,14 @@ export class AuthService {
     // Use access token to retrieve user's profile and set session
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       this._setSession(authResult, profile);
+
+      this.adminApiService
+        .getUserName(profile.name)
+        .subscribe(data => {
+          localStorage.setItem('user', JSON.stringify(data));
+          this.data.user = data;
+        });
+
     });
   }
 
@@ -76,6 +85,7 @@ export class AuthService {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('profile', JSON.stringify(profile));
     this.setLoggedIn(true);
+
   }
 
   logout() {

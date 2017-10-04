@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 //
 import { ApiService } from '../api.service';
 import { News } from '../news';
@@ -20,7 +21,12 @@ export class NewsListComponent implements OnInit {
   newsList: News[];
 
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {
+  constructor(
+    private location: Location,
+    private apiService: ApiService,
+    private route: ActivatedRoute,
+
+  ) {
 
     this.sub = this.route.params.subscribe(params => {
       if (params['type']) {
@@ -34,6 +40,10 @@ export class NewsListComponent implements OnInit {
 
   ngOnInit() {
     if (this.fullMode == false) {
+
+      if (this.location.path() != "") {
+        this.fullMode = true;
+      }
       this.getNewsList(this.type);
     }
   }

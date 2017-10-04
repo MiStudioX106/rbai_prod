@@ -18,6 +18,7 @@ var exam = require('./api/exam');
 var course = require('./api/course');
 
 
+
 // // We are going to implement a JWT middleware that will ensure the validity of our token. We'll require each protected route to have a valid access_token sent in the Authorization header
 const authCheck = jwt({
     secret: jwks.expressJwtSecret({
@@ -42,7 +43,7 @@ router.use('/api/maillist', authCheck, maillist);
 router.use('/api/mail', authCheck, mail);
 router.use('/api/document', authCheck, document);
 router.use('/api/exam', authCheck, exam);
-router.use('/api/course',authCheck, course);
+router.use('/api/course', authCheck, course);
 
 
 
