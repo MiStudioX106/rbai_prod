@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 //
 import { environment } from '../../environments/environment';
@@ -31,6 +31,7 @@ export class DocumentEditComponent implements OnInit {
   public courseuploader: FileUploader = new FileUploader({ url: environment.adminUrl + '/upload/doc/course' });
 
   constructor(
+    private router: Router,
     private apiService: ApiService,
     private adminApiService: AdminApiService,
     private route: ActivatedRoute
@@ -56,7 +57,7 @@ export class DocumentEditComponent implements OnInit {
 
       var dateFormat = require('dateformat');
       var datetimestamp = dateFormat(Date.now(), "yyyy-mm-dd");
-      this.document.link = response.filename;
+      this.document.link = response.filelink;
       this.document.time = datetimestamp;
     };
 
@@ -68,7 +69,7 @@ export class DocumentEditComponent implements OnInit {
 
       var dateFormat = require('dateformat');
       var datetimestamp = dateFormat(Date.now(), "yyyy-mm-dd");
-      this.document.link = response.filename;
+      this.document.link = response.filelink;
       this.document.time = datetimestamp;
     };
   }
@@ -104,9 +105,10 @@ export class DocumentEditComponent implements OnInit {
     this.adminApiService
       .createDocument(this.document, doctype)
       .subscribe(data => {
-        this.document = data;
+
         if (data.error_code == 0) {
           alert('新增成功');
+          this.router.navigate(['/documents']);
         }
       });
   }
@@ -119,6 +121,7 @@ export class DocumentEditComponent implements OnInit {
           alert(data.error_code)
         } else {
           alert('編輯成功');
+          this.router.navigate(['/documents']);
         }
       });
   }
@@ -131,6 +134,7 @@ export class DocumentEditComponent implements OnInit {
           alert(data.error_code)
         } else {
           alert('刪除成功');
+          this.router.navigate(['/documents']);
         }
       });
   }

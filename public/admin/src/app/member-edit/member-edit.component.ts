@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 //
 import { environment } from '../../environments/environment';
@@ -28,6 +28,7 @@ export class MemberEditComponent implements OnInit {
   public uploader: FileUploader = new FileUploader({ url: environment.adminUrl + '/upload/img/member' });
 
   constructor(
+    private router: Router,
     private apiService: ApiService,
     private adminApiService: AdminApiService,
     private route: ActivatedRoute
@@ -67,7 +68,12 @@ export class MemberEditComponent implements OnInit {
     this.adminApiService
       .createMember(this.member)
       .subscribe(data => {
-        this.member = data;
+        if (data.error_code != 0) {
+          alert(data.error_code)
+        } else {
+          alert('新增成功');
+          this.router.navigate(['/members']);
+        }
       });
   }
 
@@ -77,6 +83,9 @@ export class MemberEditComponent implements OnInit {
       .subscribe(data => {
         if (data.error_code != 0) {
           alert(data.error_code)
+        } else {
+          alert('編輯成功');
+          this.router.navigate(['/members']);
         }
       });
   }
@@ -86,7 +95,10 @@ export class MemberEditComponent implements OnInit {
       .deleteMember(this.id)
       .subscribe(data => {
         if (data.error_code != 0) {
-          alert(data.error_code)
+          alert(data.error_code);
+        } else {
+          alert('刪除成功')
+          this.router.navigate(['/members']);
         }
       });
   }

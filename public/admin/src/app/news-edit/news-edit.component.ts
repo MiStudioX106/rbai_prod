@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 //
 import { AdminApiService } from '../admin-api.service';
 import { Data } from '../data';
@@ -21,6 +21,7 @@ export class NewsEditComponent implements OnInit {
   private sub: any;
 
   constructor(
+    private router: Router,
     private apiService: ApiService,
     private adminApiService: AdminApiService,
     private route: ActivatedRoute,
@@ -68,6 +69,7 @@ export class NewsEditComponent implements OnInit {
           alert(data.error_code)
         } else {
           alert('編輯成功');
+          this.router.navigate(['/news-list/' + this.news.type]);
         }
       });
   }
@@ -80,6 +82,7 @@ export class NewsEditComponent implements OnInit {
           alert(data.error_code)
         } else {
           alert('刪除成功');
+          this.router.navigate(['/news-list/' + this.news.type]);
         }
       });
   }
@@ -92,6 +95,7 @@ export class NewsEditComponent implements OnInit {
           alert(data.error_code)
         } else {
           alert('新增成功');
+          this.router.navigate(['/news-list/' + this.news.type]);
         }
       })
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 //
 import { environment } from '../../environments/environment';
 //
@@ -8,7 +8,6 @@ import { AdminApiService } from '../admin-api.service';
 import { RecruitContentComponent } from '../../../../client/src/app/recruit-content/recruit-content.component';
 import { ApiService } from '../../../../client/src/app/api.service';
 import { Recruit } from '../../../../client/src/app/recruit';
-import './recruit-edit.js';
 //
 
 @Component({
@@ -25,6 +24,7 @@ export class RecruitEditComponent implements OnInit {
   private sub: any;
 
   constructor(
+    private router: Router,
     private apiService: ApiService,
     private adminApiService: AdminApiService,
     private route: ActivatedRoute
@@ -56,7 +56,12 @@ export class RecruitEditComponent implements OnInit {
     this.adminApiService
       .createRecruit(this.recruit)
       .subscribe(data => {
-        this.recruit = data;
+        if (data.error_code != 0) {
+          alert(data.error_code)
+        }else{
+          alert('新增成功');
+          this.router.navigate(['/recruitments']);
+        }
       });
   }
 
@@ -67,6 +72,10 @@ export class RecruitEditComponent implements OnInit {
         if (data.error_code != 0) {
           alert(data.error_code)
         }
+        else {
+          alert('編輯成功');
+          this.router.navigate(['/recruitments']);
+        }
       });
   }
 
@@ -76,6 +85,10 @@ export class RecruitEditComponent implements OnInit {
       .subscribe(data => {
         if (data.error_code != 0) {
           alert(data.error_code)
+        }
+        else {
+          alert('刪除成功');
+          this.router.navigate(['/recruitments']);
         }
       });
   }
