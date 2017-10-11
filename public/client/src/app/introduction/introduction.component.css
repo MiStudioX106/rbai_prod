@@ -25,16 +25,21 @@ section .row {
   background-color: rgb(223, 243, 246);
 }
 
+#Member {
+  background-color: rgb(255, 237, 232);
+}
+
+
 #Location {
   background-color: rgb(255, 237, 232);
 }
 
-#Intro .col-lg-3, #Research .col-lg-3, #Location .col-lg-3 {
+#Intro .col-lg-3, #Research .col-lg-3, #Member .col-lg-3, #Location .col-lg-3 {
   padding: 0;
   height: 100%;
 }
 
-#Intro .col-lg-9, #Location .col-lg-9 {
+#Intro .col-lg-9, #Member .col-lg-9, #Location .col-lg-9 {
   padding-left: 25px;
   padding-right: 80px;
   height: 100%;
@@ -54,7 +59,7 @@ section .row {
   color: #FFF;
 }
 
-#Intro .introduction_title_big, #Research .introduction_title_big, #Location .introduction_title_big {
+#Intro .introduction_title_big, #Research .introduction_title_big,#Member .introduction_title_big, #Location .introduction_title_big {
   margin-left: 1.5em;
   padding-left: 15px;
   text-align: left;
@@ -70,6 +75,11 @@ section .row {
 #Research .introduction_title_big {
   background-color: rgb(111, 196, 206);
 }
+
+#Member .introduction_title_big {
+  background-color: rgb(251, 153, 127);
+}
+
 
 #Location .introduction_title_big {
   background-color: rgb(251, 153, 127);
@@ -87,6 +97,11 @@ section .row {
 #Research .introduction_title {
   color: rgb(31, 77, 83);
 }
+
+#Member .introduction_title {
+  color: rgb(31, 77, 83);
+}
+
 
 #Location .introduction_title {
   color: #F1CACA;
@@ -214,4 +229,16 @@ section .row {
   .slide {
     padding: 0;
   }
+}
+
+.cards {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
