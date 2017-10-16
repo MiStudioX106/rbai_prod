@@ -1,5 +1,12 @@
 {
     "serverConfig": {
         "port": 8088
+    },
+    "dbConfig": {
+        "url": "mongodb://studio.mis.ccu.edu.tw/rbai",
+        "opt": {
+            "user": "rbaiRW",
+            "pass": "!QAZmissa2wsx"
+        }
     }
 }
