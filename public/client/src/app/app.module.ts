@@ -20,7 +20,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { CarouselComponent } from './carousel/carousel.component';
-import { LoginComponent } from './login/login.component';
 import { CardComponent } from './card/card.component';
 import { HomeComponent } from './home/home.component';
 import { MembersComponent } from './members/members.component';
@@ -49,7 +48,6 @@ import { OtherComponent } from './other/other.component';
     FooterComponent,
     NewsListComponent,
     CarouselComponent,
-    LoginComponent,
     CardComponent,
     HomeComponent,
     MembersComponent,
