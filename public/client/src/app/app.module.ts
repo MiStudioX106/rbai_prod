@@ -10,6 +10,8 @@ import { ApiService } from './api.service';
 
 //Pipe
 import { SafePipe } from './safe.pipe';
+import { NewsTypePipe } from './news-type.pipe';
+import { ExamTypePipe } from './exam-type.pipe';
 
 //admin Component
 import { ButtonEditComponent } from '../../../admin/src/app/button-edit/button-edit.component';
@@ -35,8 +37,7 @@ import { FullMenuComponent } from './full-menu/full-menu.component';
 import { DocumentComponent } from './document/document.component';
 import { RecruitContentComponent } from './recruit-content/recruit-content.component';
 import { NewsContentComponent } from './news-content/news-content.component';
-import { NewsTypePipe } from './news-type.pipe';
-import { ExamTypePipe } from './exam-type.pipe';
+
 
 import { OwlModule } from 'ng2-owl-carousel';
 import { OtherComponent } from './other/other.component';
@@ -66,6 +67,7 @@ import { OtherComponent } from './other/other.component';
     NewsContentComponent,
     NewsTypePipe,
     ExamTypePipe,
+
     OtherComponent
   ],
   imports: [

@@ -8,12 +8,16 @@ import { AuthModule } from './auth.module';
 //other Library
 import { CKEditorModule } from 'ng2-ckeditor';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import {DndModule} from 'ng2-dnd';
 
 //Pipe
 import { SafePipe } from './safe.pipe';
+import { NewsTypePipe } from './news-type.pipe';
+import { ExamTypePipe } from './exam-type.pipe';
 
 //Client Service
 import { ApiService } from '../../../client/src/app/api.service';
+
 
 //Client Component
 import { DocumentListComponent } from '../../../client/src/app/document-list/document-list.component';
@@ -40,8 +44,6 @@ import { ButtonEditComponent } from './button-edit/button-edit.component';
 import { DocumentEditComponent } from './document-edit/document-edit.component';
 import { NewsEditComponent } from './news-edit/news-edit.component';
 import { NewsListComponent } from './news-list/news-list.component';
-import { NewsTypePipe } from './news-type.pipe';
-import { ExamTypePipe } from './exam-type.pipe';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { MaillistComponent } from './maillist/maillist.component';
 import { DocumentsComponent } from './documents/documents.component';
@@ -81,7 +83,8 @@ import { CallbackComponent } from './callback/callback.component';
     HttpModule,
     CKEditorModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    DndModule.forRoot()
   ],
   providers: [ApiService, AdminApiService, Data, AuthService, AuthGuard],
   bootstrap: [AppComponent]

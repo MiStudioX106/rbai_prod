@@ -43,7 +43,7 @@ router.get('/members', function (req, res, next) {
         } else {
             res.json(member).status(200);
         }
-    });
+    }).sort( { order: 1 } );
 });
 
 router.get('/recruits', function (req, res, next) {

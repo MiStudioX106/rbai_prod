@@ -9,7 +9,8 @@ var memberSchema = new Schema({
     education: String,
     office: String,
     exts: String,
-    email: String
+    email: String,
+    order:Number
 }, {
     collection: 'member'
 });

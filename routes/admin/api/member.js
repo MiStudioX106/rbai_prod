@@ -38,6 +38,31 @@ router.put('/:id', function (req, res, next) {
         };
     });
 });
+//
+router.put('/', function (req, res, next) {
+    var members = req.body
+    var errors =[];
+   for(var i =0;i<members.length;i++)
+    {
+        Member.findOneAndUpdate({
+            _id: members[i]._id
+        }, members[i], function (err, result) {
+            if (err) {
+                errors.push(err);
+            } 
+        });
+    }
+    if (errors.length>0) {
+        res.send({
+            error_code: 1,
+            err: errors
+        });
+    } else {
+        res.json({
+            error_code: 0
+        });
+    }
+});
 //delete member
 router.delete('/:id', function(req, res) {
     Member.findOneAndRemove({

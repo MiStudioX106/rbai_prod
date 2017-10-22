@@ -69,6 +69,14 @@ export class AdminApiService {
       .map(response => response.json())
   }
 
+  updateMemberOrder(members: Member[]) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.authHttp
+      .put(this.memberUrl, JSON.stringify(members), { headers: headers })
+      .map(response => response.json())
+  }
+
   deleteMember(id: string) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');

@@ -49,7 +49,7 @@ export class MemberEditComponent implements OnInit {
         this.editMode = true;
         this.getMember(this.id);
       } else if (params['type']) {
-        this.member = { type: params['type'], name: '', title: '', experts: '', education: '', office: '', exts: '', email: '', imgUrl: '' }
+        this.member = { type: params['type'], name: '', title: '', experts: '', education: '', office: '', exts: '', email: '', imgUrl: '' ,order:-1}
       } else {
         console.log('error');
       }
