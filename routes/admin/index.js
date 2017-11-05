@@ -48,7 +48,7 @@ router.use('/api/course', authCheck, course);
 
 
 router.use(function (req, res) {
-    res.render(path.join(__dirname, '../../public/admin/dist/index.html'));
+    res.render(path.join(__dirname, '../../public/angular/dist-admin/index-admin.html'));
 });
 
 module.exports = router;
